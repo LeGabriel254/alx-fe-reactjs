@@ -1,7 +1,7 @@
 function Footer() {
 return(
   <footer>
-    <p>copyright&: 2023 City Lovers.
+    <p>&copy; 2023 City Lovers.
     </p>
   </footer>
 );
