@@ -3,10 +3,12 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Footer from './Components/Footer'
-import Header from './Components/Header'
 import MainContent from './Components/MainContent'
 import WelcomeMessage from './Components/WelcomeMessage'
 import UserProfile from './Components/UserProfile'
+import Header from './components/Header'
+import Counter from './components/Counter'
+
 
 function App() {
   const [count, setCount] = useState(0)
@@ -38,6 +40,7 @@ function App() {
       <MainContent />
       <WelcomeMessage />
       <UserProfile name="Alice" age="25" bio="Loves hiking and photography" />
+      <Counter />
     </>
   )
 }
