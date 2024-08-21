@@ -6,7 +6,7 @@ import Footer from './Components/Footer'
 import MainContent from './Components/MainContent'
 import WelcomeMessage from './Components/WelcomeMessage'
 import UserProfile from './Components/UserProfile'
-import Header from './components/Header'
+import Header from './Header'
 import Counter from './components/Counter'
 
 
