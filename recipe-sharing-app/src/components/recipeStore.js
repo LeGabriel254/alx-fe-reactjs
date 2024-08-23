@@ -34,4 +34,11 @@ const recipe = createStore((set) => ({
   ),
 }));
 
+ generateRecommendations: () => set(state => {
+  const recommended = state.recipes.filter(recipe =>
+    state.favorites.includes(recipe.id) && Math.random() > 0.5
+  );
+  return { recommendations: recommended };
+})
+
 export default useRecipeStore;
