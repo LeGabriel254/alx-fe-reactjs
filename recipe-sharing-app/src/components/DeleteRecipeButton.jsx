@@ -1,12 +1,13 @@
-import { useDispatch } from 'zustand/hooks';
-import { recipeStore } from './path/to/your/store';
+import { useRecipeStore } from '../recipeStore';
+import { useNavigate } from 'react-router-dom';
 
-function DeleteRecipeButton({ recipe }) {
-  const dispatch = useDispatch(recipeStore);
+const DeleteRecipeButton = ({ recipeId }) => {
+  const deleteRecipe= useRecipeStore((state) => state.deleteRecipe);
+  const navigate = useNavigate();
 
-  const handleDelete = () => {
-    dispatch.deleteRecipe(recipe.id);
   };
 
-  return <button onClick={handleDelete}></button>
-};
+  return <button onClick={handleDelete}>Delete Recipe</button>;
+
+
+export default DeleteRecipeButton;
