@@ -15,3 +15,4 @@ function RecipeDetails() {
     </div>
   );
 }
+export default RecipeDetails;
