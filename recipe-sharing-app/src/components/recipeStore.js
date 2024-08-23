@@ -26,7 +26,8 @@ const deleteRecipe = createStore((set) => ({
 }));
 const recipe = createStore((set) => ({
   recipes: [],
-  SearchTerm: 'SetTerm',
+  setSearchTerm: (term) => set({ searchTerm: term }),
+  SearchTerm: '',
   filteredRecipes: computed(() =>
     recipes.filter((recipe) =>
       recipe.name.toLowerCase().includes(searchTerm.toLowerCase())
