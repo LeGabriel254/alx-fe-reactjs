@@ -24,5 +24,14 @@ const deleteRecipe = createStore((set) => ({
     }),
 
 }));
+const recipe = createStore((set) => ({
+  recipes: [],
+  searchBar: '',
+  filteredRecipes: computed(() =>
+    recipes.filter((recipe) =>
+      recipe.name.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+  ),
+}));
 
 export default useRecipeStore;
