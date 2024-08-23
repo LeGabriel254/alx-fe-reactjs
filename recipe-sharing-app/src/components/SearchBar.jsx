@@ -1,11 +1,14 @@
-const recipeStore = createStore((set) => ({
-  recipes: [],
-  searchTerm: '',
-  filteredRecipes: computed(() =>
-    recipes.filter((recipe) =>
-      recipe.name.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-  ),
-  setSearchTerm: (term) => set({ searchTerm: term }),
- 
-}));
+import React from 'react';
+import { useRecipeStore } from '.component/recipeStore';
+
+const SearchBar = () => {
+  const setSearchTerm = useRecipeStore(state => state.setSearchTerm);
+
+  return (
+    <input
+      type="text"
+      placeholder="Search recipes..."
+      onChange={(e) => setSearchTerm(e.target.value)}
+    />
+  );
+};
