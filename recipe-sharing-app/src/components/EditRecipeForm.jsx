@@ -1,12 +1,13 @@
 import { useDispatch } from 'zustand/hooks';
 import { recipeStore } from './path/to/your/store';
+import useRecipeStore from './RecipeStore';
 
 function EditRecipeForm({ recipe }) {
   const dispatch = useDispatch(recipeStore);
   const [form, setForm] = useState(recipe);
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    event.preventDefault(useRecipeStore);
     dispatch.updateRecipe(form);
   };
 
