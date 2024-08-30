@@ -59,11 +59,11 @@ function RegistrationForm() {
     <form onSubmit={handleSubmit}>
       <div>
         <label>
-          Name:
+          Username:
           <input
             type="text"
             name="name"
-            value={formData.name}
+            value={Username}
             onChange={handleChange}
           />
         </label>
@@ -75,7 +75,7 @@ function RegistrationForm() {
           <input
             type="email"
             name="email"
-            value={formData.email}
+            value={email}
             onChange={handleChange}
           />
         </label>
@@ -87,7 +87,7 @@ function RegistrationForm() {
           <input
             type="password"
             name="password"
-            value={formData.password}
+            value={password}
             onChange={handleChange}
           />
         </label>
