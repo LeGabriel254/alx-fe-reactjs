@@ -1,20 +1,21 @@
-import React from 'react'
-import { useQuery } from "@tanstack/react-query";
+import React from 'react';
+import { useQuery } from '@tanstack/react-query';
 
-// Fetch posts from the API
+// Function to fetch posts from the API
 const fetchPosts = async () => {
-  const response = await fetch('https://jsonplaceholder.typicode.com/posts') 
+  const response = await fetch('https://jsonplaceholder.typicode.com/posts');
   if (!response.ok) {
     throw new Error('Network response was not ok');
   }
-  return response.json(); 
-}
+  return response.json();
+};
+
 function PostsComponent() {
   // Using useQuery to fetch data
   const { data, error, isLoading, isError, refetch } = useQuery({
     queryKey: ['posts'],
     queryFn: fetchPosts,
-    staleTime: 60000, // A minute cache time
+    staleTime: 60000, // 1 minute cache time
   });
 
   if (isLoading) {
