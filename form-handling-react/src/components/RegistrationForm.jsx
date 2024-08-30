@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 function RegistrationForm() {
-  //initialize state for each nput field
+  //initialize Usestate for each nput field
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
