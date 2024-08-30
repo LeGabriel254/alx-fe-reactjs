@@ -1,97 +1,56 @@
 import React, { useState } from 'react';
 
 function RegistrationForm() {
-  // Initialize state for each input field
-  const [Username, setUsername]= useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('');
-  const [errors, setErrors] = useState('');
+  //initialize state for each nput field
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [errors, setErrors] = useState('');
 
-  // Handle input changes
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (!username) setErrors('Username is required');
+        if (!email) setErrors('Email is required');
+        if (!password) setErrors('Password is required');
+        else {
+            console.log('Form submitted successfully!');
+            setErrors('');
+            setUsername('');
+            setEmail('');
+            setPassword('');
+        }
+    };
 
-  // Validation logic
-  const validateForm = () => {
-    let validationErrors = {};
-    let isValid = true;
-
-    if (!value.Username.trim()) {
-      validationErrors.name = 'Name is required';
-      isValid = false;
-    }
-    if (!value.email.trim()) {
-      validationErrors.email = 'Email is required';
-      isValid = false;
-    }
-    if (!value.password.trim()) {
-      validationErrors.password = 'Password is required';
-      isValid = false;
-    }
-
-    setErrors(validationErrors);
-    return isValid;
-  };
-
-  // Handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (validateForm()) {
-      // If the form is valid, proceed with form submission
-      console.log('Form data:', value);
-      alert('Form submitted successfully!');
-      // Reset form or perform other actions here
-    } else {
-      alert('Please fill in all the fields.');
-    }
-  };
-
-  return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>
-          Username:
-          <input
-            type="text"
-            name="name"
-            value={Username}
-          onChange={(e) => setUsername(e.target.value)}   />
-        </label>
-        {errors.name && <span className="error">{errors.name}</span>}
-      </div>
-      <div>
-        <label>
-          Email:
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </label>
-        {errors.email && <span className="error">{errors.email}</span>}
-      </div>
-      <div>
-        <label>
-          Password:
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
-        {errors.password && <span className="error">{errors.password}</span>}
-      </div>
-      <button type="submit">Submit</button>
-    </form>
-  );
+    return (
+        <form onSubmit={handleSubmit}>
+            <div>
+                <label>Username:</label>
+                <input
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                />
+            </div>
+            <div>
+                <label>Email:</label>
+                <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+            </div>
+            <div>
+                <label>Password:</label>
+                <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+            </div>
+            {errors && <div>{errors}</div>}
+            <button type="submit">Register</button>
+        </form>
+    );
 }
 
 export default RegistrationForm;
