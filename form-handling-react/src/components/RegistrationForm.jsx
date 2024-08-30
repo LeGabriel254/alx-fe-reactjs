@@ -48,7 +48,7 @@ function RegistrationForm() {
                 />
             </div>
             {errors && <div>{errors}</div>}
-            <button type="submit">Register</button>
+            <button type="submit">Submit</button>
         </form>
     );
 }

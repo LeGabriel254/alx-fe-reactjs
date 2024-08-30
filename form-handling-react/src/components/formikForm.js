@@ -10,12 +10,12 @@ const RegistrationForm = () => {
       email: '',
     },
     validationSchema: Yup.object({
-      firstName: Yup.string()
+      Username: Yup.string()
         .max(15, 'Must be 15 characters or less')
         .required('Required'),
-      lastName: Yup.string()
-        .max(20, 'Must be 20 characters or less')
-        .required('Required'),
+      // lastName: Yup.string()
+      //   .max(20, 'Must be 20 characters or less')
+      //   .required('Required'),
       email: Yup.string().email('Invalid email address').required('Required'),
     }),
     onSubmit: values => {
@@ -24,21 +24,21 @@ const RegistrationForm = () => {
   });
   return (
     <form onSubmit={formik.handleSubmit}>
-      <label htmlFor="firstName">First Name</label>
+      <label htmlFor="Username">Username</label>
       <input
-        id="firstName"
+        id="Username"
         type="text"
-        {...formik.getFieldProps('firstName')}
+        {...formik.getFieldProps('Username')}
       />
       {formik.touched.firstName && formik.errors.firstName ? (
         <div>{formik.errors.firstName}</div>
       ) : null}
 
-      <label htmlFor="lastName">Last Name</label>
+      {/* {{<label htmlFor="lastName">Last Name</label>
       <input id="lastName" type="text" {...formik.getFieldProps('lastName')} />
       {formik.touched.lastName && formik.errors.lastName ? (
-        <div>{formik.errors.lastName}</div>
-      ) : null}
+        <div>{formik.errors.lastName}</div> }
+      ) : null}} */}
 
       <label htmlFor="email">Email Address</label>
       <input id="email" type="email" {...formik.getFieldProps('email')} />
