@@ -3,8 +3,8 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import TodoList from '../components/TodoList';
 
-describe('TodoList Component', () => {
-  
+test('renders correctly', () => {
+    render(<TodoList todos={[{ id: 1, text: 'Test Todo', completed: false }]} />);
   // Test Initial Render
   test('renders initial todos', () => {
     render(<TodoList />);
