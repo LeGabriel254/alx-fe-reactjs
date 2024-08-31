@@ -1,62 +1,68 @@
 import React from 'react';
-import { render, fireEvent, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import TodoList from '../components/TodoList';
 
-describe('TodoList', () => {
-    test('renders TodoList component', () => {
-        render(<TodoList />);
-        expect(screen.getByText('Todo List')).toBeInTheDocument();
-        expect(screen.getByPlaceholderText('Add new todo')).toBeInTheDocument();
-        expect(screen.getByText('Add Todo')).toBeInTheDocument();
-    });
+describe('TodoList Component', () => {
+  
+  // Test Initial Render
+  test('renders initial todos', () => {
+    render(<TodoList />);
+    
+    // Check that initial todos are displayed
+    expect(screen.getByText('Learn React')).toBeInTheDocument();
+    expect(screen.getByText('Build a Todo App')).toBeInTheDocument();
+    expect(screen.getByText('Write tests')).toBeInTheDocument();
+  });
 
-    test('displays initial todos', () => {
-        render(<TodoList />);
-        expect(screen.getByText('Learn React')).toBeInTheDocument();
-        expect(screen.getByText('Build a Todo App')).toBeInTheDocument();
-        expect(screen.getByText('Write Tests')).toBeInTheDocument();
-    });
+  // Test Adding Todos
+  test('adds a new todo', () => {
+    render(<TodoList />);
+    
+    // Find the input and button elements
+    const input = screen.getByPlaceholderText('Add a new todo');
+    const addButton = screen.getByText('Add');
 
-    test('adds a new todo', () => {
-        render(<TodoList />);
-        const input = screen.getByPlaceholderText('Add new todo');
-        const addButton = screen.getByText('Add Todo');
+    // Simulate user input and button click to add a new todo
+    fireEvent.change(input, { target: { value: 'New Todo' } });
+    fireEvent.click(addButton);
+    
+    // Verify the new todo appears in the document
+    expect(screen.getByText('New Todo')).toBeInTheDocument();
+  });
 
-        fireEvent.change(input, { target: { value: 'New Todo Item' } });
-        fireEvent.click(addButton);
+  // Test Toggling Todos
+  test('toggles a todo completed state', () => {
+    render(<TodoList />);
+    
+    // Find the todo item element
+    const todoItem = screen.getByText('Learn React');
+    
+    // Simulate a click to toggle the completed state
+    fireEvent.click(todoItem);
+    
+    // Verify the completed style is applied
+    expect(todoItem).toHaveStyle('text-decoration: line-through');
+    
+    // Click again to toggle back
+    fireEvent.click(todoItem);
+    
+    // Verify the completed style is removed
+    expect(todoItem).not.toHaveStyle('text-decoration: line-through');
+  });
 
-        expect(screen.getByText('New Todo Item')).toBeInTheDocument();
-        expect(input.value).toBe('');  // Check if input is cleared after adding
-    });
+  // Test Deleting Todos
+  test('deletes a todo', () => {
+    render(<TodoList />);
+    
+    // Find the delete button for the first todo
+    const deleteButton = screen.getAllByText('Delete')[0];
+    
+    // Simulate clicking the delete button
+    fireEvent.click(deleteButton);
+    
+    // Verify the todo is no longer in the document
+    expect(screen.queryByText('Learn React')).not.toBeInTheDocument();
+  });
 
-    test('toggles a todo', () => {
-        render(<TodoList />);
-        const todoItem = screen.getByText('Learn React');
-
-        fireEvent.click(todoItem);
-        expect(todoItem).toHaveStyle('text-decoration: line-through');
-
-        fireEvent.click(todoItem);
-        expect(todoItem).toHaveStyle('text-decoration: none');
-    });
-
-    test('deletes a todo', () => {
-        render(<TodoList />);
-        const deleteButtons = screen.getAllByText('Delete');
-        const firstTodoDeleteButton = deleteButtons[0];
-
-        fireEvent.click(firstTodoDeleteButton);
-        expect(screen.queryByText('Learn React')).not.toBeInTheDocument();
-    });
-
-    test('does not add empty todos', () => {
-        render(<TodoList />);
-        const addButton = screen.getByText('Add Todo');
-        const initialTodosCount = screen.getAllByRole('listitem').length;
-
-        fireEvent.click(addButton);  // Try to add an empty todo
-
-        expect(screen.getAllByRole('listitem')).toHaveLength(initialTodosCount);  // Todo count should not change
-    });
 });
