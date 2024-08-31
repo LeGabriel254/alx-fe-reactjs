@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-
+// Initial todos for the component
 const initialTodos = [
   { id: 1, text: 'Learn React', completed: false },
   { id: 2, text: 'Build a Todo App', completed: false },
@@ -19,7 +19,7 @@ const TodoList = () => {
   };
 
   const handleToggleTodo = (id) => {
-    setTodos(todos.map(todo => 
+    setTodos(todos.map(todo =>
       todo.id === id ? { ...todo, completed: !todo.completed } : todo
     ));
   };
