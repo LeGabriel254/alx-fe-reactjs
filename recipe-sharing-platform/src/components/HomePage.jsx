@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import image from  "./images "
 const HomePage = () => {
   const [recipes, setRecipes] = useState([]);
 
