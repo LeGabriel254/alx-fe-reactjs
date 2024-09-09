@@ -8,6 +8,8 @@ import MainContent from './components/MainContent'
 import Footer from './components/Footer'
 import UserProfile from './components/UserProfile'
 import Counter from './components/Counter'
+import newAge from './components/age'
+
 function App() {
   const [count, setCount] = useState(0)
 
@@ -35,10 +37,12 @@ function App() {
       </p>
       <WelcomeMessage />
       <Header />
+       <newAge />
       <MainContent />
       <Footer />
       <UserProfile name="Alice" age="25" bio="Loves hiking and photography" />
       <Counter />
+    
     </>
   )
 }
