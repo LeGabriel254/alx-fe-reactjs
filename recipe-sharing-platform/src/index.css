@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* In your Tailwind CSS file or style tag */
+
+.bg-beige-200 {
+  background-color: #f5f5dc;
+}
+.bg-green-900 {
+  background-color: #004d40;
+}
+body{
+  background-color: #094d42;
+}
