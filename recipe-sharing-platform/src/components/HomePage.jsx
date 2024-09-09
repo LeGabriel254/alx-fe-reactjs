@@ -4,27 +4,23 @@ import data from "../data.json"
 
 const HomePage = () => {
   const [recipes, setRecipes] = useState([]);
-  const [search,setSearch] = useState('')
-  const onClick = e => {
-    e.preventDefault()
+  const onClick = (e) => {
+    e.preventDefault();
+    // Perform API request here
+  };
 
-  }
 
   useEffect(() => {
-    // Fetch the recipe data from the data.json file
-    fetch('https://via.placeholder.com/150', { mode: 'no-cors' })
-  .then((response) => {
-    // You'll get an opaque response, no status or body
-    console.log(response);
-  })
-  .catch((error) => {
-    console.error('Fetch error:', error);
-  });
-  
-  })
+    fetch('https://via.placeholder.com/150')
+      .then((response) => response.json())
+      .then((data) => setRecipes(data))
+      .catch((error) => console.error('Error fetching data:', error));
+  }, []);
+ 
+
 
   return (
-     (
+     <>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {recipes.map((recipe) => (
           <div key={recipe.id} className="bg-white shadow-md p-4 rounded">
@@ -34,8 +30,14 @@ const HomePage = () => {
           </div>
         ))}
       </div>
+      <div className="meal-search-box">
+        <input type="text" className='searchBar'  placeholder='Enter an ingredient'/>
+        <button type='submit'>
+          <i className='fas fa-search' id='search-btn'></i>
+        </button>
+      </div>
+      </>
     )
-  );
 };
 
 export default HomePage;
