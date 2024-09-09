@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-
+import data from "../data.json"
 
 
 const HomePage = () => {
@@ -24,18 +24,17 @@ const HomePage = () => {
   })
 
   return (
-   <>return (
-    <div className="recipe-container" onClick={onClick}>
-      {recipes.map((recipe) => (
-        <div className="card" key={recipes.id}>
-          <img src={recipe.image} alt={recipes.title} />
-          <h2>{recipes.title}</h2>
-          <p>{recipes.summary}</p>
-          <input type="search" name="search" id={recipes.title} value={search} onChange={(e) => setSearch(e.target.value)}  />
-        </div>
-      ))}
-    </div>
-  );</>
+     (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {recipes.map((recipe) => (
+          <div key={recipe.id} className="bg-white shadow-md p-4 rounded">
+            <img src={recipe.image} alt={recipe.title} className="w-full h-32 object-cover mb-2" />
+            <h3 className="text-xl font-semibold mb-1">{recipe.title}</h3>
+            <p className="text-gray-600">{recipe.summary}</p>
+          </div>
+        ))}
+      </div>
+    )
   );
 };
 
