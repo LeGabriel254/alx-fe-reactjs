@@ -1,9 +1,9 @@
-// RecipeDetail.js
+// // RecipeDetail.js
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import data from '../data/data.json'; // Assuming data.json is in a data folder
+import data from '../../public/data.json';
 
-function RecipeDetail() {
+export default function RecipeDetail() {
   const { id } = useParams();
   const [recipe, setRecipe] = useState(null);
 
@@ -11,8 +11,9 @@ function RecipeDetail() {
   useEffect(() => {
     const selectedRecipe = data.recipes.find((recipe) => recipe.id === parseInt(id));
     setRecipe(selectedRecipe);
+    console.log(data)
   }, [id]);
-
+  
   // If recipe is not found, show an error message
   if (!recipe) {
     return <div>Recipe not found!</div>;
@@ -33,5 +34,3 @@ function RecipeDetail() {
     </div>
   );
 }
-
-export default RecipeDetail;
