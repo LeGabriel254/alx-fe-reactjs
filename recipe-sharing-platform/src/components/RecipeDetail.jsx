@@ -20,11 +20,11 @@ export default function RecipeDetail() {
   }
 
   return (
-    <div>
+    <div className="container mx-auto p-6">
       <h1>{recipe.title}</h1>
-      <img src={recipe.image} alt={recipe.title} style={{ width: '300px', height: 'auto' }} />
+      <img src={recipe.image} alt={recipe.title}   className="rounded-lg shadow-lg w-full h-auto"/>
       <h2>Ingredients:</h2>
-      <ul>
+      <ul className="list-disc list-inside text-lg text-gray-700 space-y-2" >
         {recipe.ingredients.map((ingredient, index) => (
           <li key={index}>{ingredient}</li>
         ))}
