@@ -16,14 +16,14 @@ export default function RecipeDetail() {
   
   // If recipe is not found, show an error message
   if (!recipe) {
-    return <div>Recipe not found!</div>;
+    return <div className='font-bold'>Recipe not found!</div>;
   }
 
   return (
     <div className="container mx-auto p-6">
       <h1>{recipe.title}</h1>
       <img src={recipe.image} alt={recipe.title}   className="rounded-lg shadow-lg w-full h-auto"/>
-      <h2>Ingredients:</h2>
+      <h2 className='font-medium'>Ingredients:</h2>
       <ul className="list-disc list-inside text-lg text-gray-700 space-y-2" >
         {recipe.ingredients.map((ingredient, index) => (
           <li key={index}>{ingredient}</li>
