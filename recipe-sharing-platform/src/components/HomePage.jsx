@@ -32,7 +32,7 @@ const HomePage = () => {
             <div className="p-6">
               <h2 className="text-2xl font-bold mb-2">{recipe.title}</h2>
               <p className="text-gray-700 mb-4">{recipe.summary}</p>
-              <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-all">
+              <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-all font-extralight">
                 View Recipe
               </button>
             </div>
@@ -46,7 +46,7 @@ const HomePage = () => {
 
 
 const Loading = () => (
-  <div>Loaidng....</div>
+  <div className='text-sm'>Loaidng....</div>
 )
 
 export default HomePage;
