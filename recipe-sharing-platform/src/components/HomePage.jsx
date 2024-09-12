@@ -1,5 +1,7 @@
 import React, { Suspense, useState, useEffect } from 'react';
 import spaghetti from "./images/spaghetti.jpg"
+import { Link } from 'react-router-dom';
+
 const HomePage = () => {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(false)
