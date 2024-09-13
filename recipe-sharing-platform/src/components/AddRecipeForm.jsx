@@ -1,31 +1,29 @@
 import React, { useState } from 'react';
 
 const RecipeForm = () => {
-  // State variables to store form data
+  // variables to store form data
   const [title, setTitle] = useState('');
   const [ingredients, setIngredients] = useState('');
   const [steps, setSteps] = useState('');
-
-  // State variables for validation messages
   const [errors, setErrors] = useState({});
 
   // Validation function
   const validateForm = () => {
     const newErrors = {};
     
-    // Validate title (must not be empty and at least 3 characters)
+    //(must not be empty and at least 3 characters)
     if (!title.trim()) {
       newErrors.title = 'Title is required';
     } else if (title.length < 3) {
       newErrors.title = 'Title must be at least 3 characters long';
     }
 
-    // Validate ingredients (must not be empty)
+    // ingredients (must not be empty)
     if (!ingredients.trim()) {
       newErrors.ingredients = 'Ingredients are required';
     }
 
-    // Validate steps (must not be empty)
+    //  steps (must not be empty)
     if (!steps.trim()) {
       newErrors.steps = 'Preparation steps are required';
     }
