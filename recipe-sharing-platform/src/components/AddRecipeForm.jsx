@@ -55,7 +55,7 @@ const RecipeForm = () => {
 
   return (
     <div>
-      <h1>Submit Your Recipe</h1>
+      <h1 className='text-slate-800 font-medium'>Submit Your Recipe</h1>
 
       <form onSubmit={handleSubmit}>
         {/* Recipe Title */}
@@ -88,7 +88,7 @@ const RecipeForm = () => {
 
         {/* Preparation Steps */}
         <div>
-          <label htmlFor="steps">Preparation Steps:</label><br />
+          <label htmlFor="steps" className='font-semibold p-12 ms:p-4 font-weight-100 text-slate-400'>Preparation Steps:</label><br />
           <textarea
             id="steps"
             value={steps}
