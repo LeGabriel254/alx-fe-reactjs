@@ -60,7 +60,7 @@ const RecipeForm = () => {
       <form onSubmit={handleSubmit}>
         {/* Recipe Title */}
         <div>
-          <label htmlFor="title">Recipe Title:</label><br />
+          <label htmlFor="title" className='drop-shadow-md rounded-lg ...'>Recipe Title:</label><br />
           <input
             type="text"
             id="title"
