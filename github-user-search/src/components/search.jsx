@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import  fetchUserData  from './services/githubService';
+import  githubServices  from './services/githubService';
 
 
 const Search = () => { 
@@ -16,9 +16,9 @@ useEffect(() =>{
     setLoading(true);
     setError('')
     try{
-      const response =await fetch(`https://api.github.com/users/{username}`)
+      const response =await fetch(username)
       const data = await response.json()
-      setuUserData([...data])
+      setuUserData(data)
     }catch(error) {
      setError('Looks like we cant find the user')
     } finally{

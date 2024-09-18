@@ -2,8 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css'
-import search from'./services/search'
-
+import './services'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -11,7 +10,7 @@ function App() {
   return (
     <>
     <Router>
-    <Route path="/search" search={search} />
+    <Route path="/search" services={search} />
     </Router>
     
     </>
