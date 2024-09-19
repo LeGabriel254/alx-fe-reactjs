@@ -43,7 +43,7 @@ const search = () => {
           <h3>Login</h3>
         </div>
         <button type='submit'>Search</button>
-
+        </form>
         {loading && <p>Loading...</p>}
         {error && <p> {error}</p>}
         {userData && (
@@ -54,7 +54,7 @@ const search = () => {
             <a href={userData.html_url} target='_blank' rel="noopener noreferrer">View Profile</a>
           </div>
         )}
-      </form>
+     
     </div>
   )
 }
