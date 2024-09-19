@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import  githubServices  from './services/githubService';
-import fetsUserData from "../services/githubService";
+import { fetchUserData } from "./services/githubService"
 
 
 const Search = () => { 
@@ -19,7 +18,7 @@ const Search = () => {
 
 
   try{
-    const data = await fetsUserData(username);
+    const data = await fetchUserData(username);
     setuUserData(data);
   }catch(error){
     setError("Looks like we can't find the user")
@@ -35,4 +34,6 @@ return(
     </form>
   </div>
 )
-}
+};
+
+export default Search;
