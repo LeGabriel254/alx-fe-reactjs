@@ -29,10 +29,20 @@ const search = () => {
 
   return (
     <div>
-      <form onChange={handleSubmit}>
- <input type="text" value={username} onChange={(e) => setUsename(e.target.value)} placeholder='Enter GitHub username' required/>
+      <form onChange={handleSubmit} className='btn gap-3'>
+        <input type="text" value={username} onChange={(e) => setUsename(e.target.value)} placeholder='Enter GitHub username' required className='in'/>
+        <button type='submit'>Search</button>
 
- <button type='submit'>Search</button>
+        {loading && <p>Loading...</p>}
+        {error && <p> {error}</p>}
+        {userData &&(
+          <div>
+            <img src={userData.avatar_url} alt={userData.name} width={100} />
+            <h3>{userData.name}</h3>
+            <p>{userData.bio}</p>
+            <a href={userData.html_url} target='_blank' rel="noopener noreferrer">View Profile</a>
+          </div>
+        )}
       </form>
     </div>
   )
