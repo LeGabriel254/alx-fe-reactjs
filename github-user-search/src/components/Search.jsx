@@ -29,7 +29,7 @@ const search = () => {
 
   return (
     <div>
-      <form onChange={handleSubmit} className='btn gap-3'>
+      <form onSubmit={handleSubmit} className='btn gap-3'>
         <input type="text" value={username} onChange={(e) => setUsename(e.target.value)} placeholder='Enter GitHub username' required className='in'/>
         <button type='submit'>Search</button>
 
