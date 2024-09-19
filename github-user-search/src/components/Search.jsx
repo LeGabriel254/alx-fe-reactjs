@@ -13,6 +13,7 @@ const search = () => {
     setUserData(null)
     setLoading(true)
 
+    // Call the fetchUserData function to get the user data
     try {
       const data = await fetchUserData(username);
       setUserData(data)
