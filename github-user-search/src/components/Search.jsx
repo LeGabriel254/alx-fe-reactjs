@@ -41,6 +41,11 @@ const search = () => {
         </div>
         <div>
           <h3>Login</h3>
+          <label htmlFor="">Email:</label>
+          <input type="text" 
+          value={email} 
+           onchange={(e) => setEmail(e.target.value)}
+           />
         </div>
         <button type='submit'>Search</button>
         </form>
