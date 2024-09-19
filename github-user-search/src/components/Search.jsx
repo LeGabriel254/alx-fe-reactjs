@@ -22,7 +22,7 @@ const search = () => {
     } catch (error) {
       setError("Looks like we cant find the user")
     } finally {
-      setLoading(false)
+      setLoading(false) /*state update to handle loading*/
     }
 
 
