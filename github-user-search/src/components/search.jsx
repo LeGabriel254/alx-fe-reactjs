@@ -1,37 +1,38 @@
 import React, { useState } from "react";
 import  githubServices  from './services/githubService';
+import fetsUserData from "../services/githubService";
 
 
 const Search = () => { 
   const [userData, setuUserData] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [username, setUsername] = useState('')
 
-const handleSubmit = (e) => {
-  e.preventDefault();
-  setLoading
-}
-useEffect(() =>{
-  async function fetchUserData(){
+
+ 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     setLoading(true);
     setError('')
-    try{
-      const response =await fetch(username)
-      const data = await response.json()
-      setuUserData(data)
-    }catch(error) {
-     setError('Looks like we cant find the user')
-    } finally{
-    setLoading(false)
-    }
-  }
-fetchUserData()
-}, [])
+    setuUserData(null);
 
 
-return(
-  <></>
-)
+  try{
+    const data = await fetsUserData(username);
+    setuUserData(data);
+  }catch(error){
+    setError("Looks like we can't find the user")
+  } finally{
+    setLoading(false);
+  };
 };
 
-
+return(
+  <div>
+    <form onSubmit={handleSubmit}>
+  <input type="text" value={username}  onChange={(e) => setUsername(e.target.value)}placeholder="Enter GitHub username" />
+    </form>
+  </div>
+)
+}
