@@ -39,13 +39,21 @@ const search = () => {
           placeholder='Enter GitHub username' required 
           />
         </div>
-        <div>
-          <h3>Login</h3>
-          <label htmlFor="">Email:</label>
-          <input type="text" 
+        <div className='btn gap-4'>
+          <h3 className='login text-neutral-900 underline font-serif font-weight: 300;'>Login</h3>
+          <label>Email:</label>
+          <input 
+          type="email" 
           value={email} 
-           onchange={(e) => setEmail(e.target.value)}
+           onchange={(e) => 
+            setEmail(e.target.value)}
            />
+        </div>
+        <div>
+            <label>Password:</label>
+            <input type="password"
+            value={password}
+            onchange={(e) => setPassword(e.target.value)} />
         </div>
         <button type='submit'>Search</button>
         </form>
