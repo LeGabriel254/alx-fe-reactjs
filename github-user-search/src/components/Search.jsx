@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useTransition } from 'react'
 import { fetchUserData } from '../services/githubService'
 
 const search = () => {
@@ -6,6 +6,8 @@ const search = () => {
   const [userData, setUserData] = useState(null)
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState('')
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,12 +32,21 @@ const search = () => {
   return (
     <div>
       <form onSubmit={handleSubmit} className='btn gap-3'>
-        <input type="text" value={username} onChange={(e) => setUsename(e.target.value)} placeholder='Enter GitHub username' required className='in'/>
+        <div>
+          <input  className='in'
+          type="text" value={username} 
+          onChange={(e) => setUsename(e.target.value)} 
+          placeholder='Enter GitHub username' required 
+          />
+        </div>
+        <div>
+          <h3>Login</h3>
+        </div>
         <button type='submit'>Search</button>
 
         {loading && <p>Loading...</p>}
         {error && <p> {error}</p>}
-        {userData &&(
+        {userData && (
           <div>
             <img src={userData.avatar_url} alt={userData.name} width={100} />
             <h3>{userData.name}</h3>
