@@ -11,10 +11,10 @@ function App() {
     <>
     <Router>
       <Routes>
-    <Route path="/Search" element={Search} />
+    {/* <Route path="/Search" element={Search} /> */}
     </Routes>
     </Router>
-    
+    <Search />
     </>
   )
 }
