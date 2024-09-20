@@ -40,11 +40,21 @@ const search = ({onSearch,users}) => {
           />
         </div>
         <div className='mb-4'>
-          <label className=''>Location:</label>
-          <input 
+          <label className='w-full p-2 block text-sm'>Location:</label>
+          <input  className='border rounded '
           type="location" value={location}
-          placeholder='Enter Location' 
+          placeholder='Enter location' 
           onChange={(e) => setLocation(e.target.value)} />
+        </div>
+        <div className='mb-4'>
+          <label className=''>Minimum Repositories</label>
+          <input
+          type="number"
+          className="w-full p-2 border rounded"
+          value={repoCount}
+          onChange={(e) => setRepoCount(e.target.value)}
+          placeholder="Enter minimum repo count"
+        />
         </div>
         <button type='submit' onClick={handleSearch}>Search</button>
       {loading && <p>Loading...</p>}
