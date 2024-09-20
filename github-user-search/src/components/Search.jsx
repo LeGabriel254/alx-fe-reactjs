@@ -39,6 +39,13 @@ const search = ({onSearch,users}) => {
             placeholder='Enter GitHub username' required
           />
         </div>
+        <div className='mb-4'>
+          <label className=''>Location:</label>
+          <input 
+          type="location" value={location}
+          placeholder='Enter Location' 
+          onChange={(e) => setLocation(e.target.value)} />
+        </div>
         <button type='submit' onClick={handleSearch}>Search</button>
       {loading && <p>Loading...</p>}
       {error && <p> {error}</p>}
