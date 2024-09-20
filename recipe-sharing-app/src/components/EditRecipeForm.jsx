@@ -18,4 +18,6 @@ function EditRecipeForm({ recipe }) {
       <button type="submit">Save Changes</button>
     </form>
   );
-}
+};
+
+export default EditRecipeForm;
