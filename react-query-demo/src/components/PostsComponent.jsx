@@ -18,7 +18,7 @@ function PostsComponent() {
     staleTime: 60000, // 1 minute cache time
     cacheTime: 300000, // 5 minutes (data remains in cache for 5 minutes after becoming inactive)
     refetchOnWindowFocus: true, // Automatically refetch when window regains focus
-    keepPreviousData: true, // Keep previous data while fetching new data
+    keepPreviousData: true, // Keep previous data while fetching new data.
   });
 
   if (isLoading) {
