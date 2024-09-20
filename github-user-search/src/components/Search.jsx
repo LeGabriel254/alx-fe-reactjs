@@ -1,15 +1,15 @@
 import React, { useState, useTransition } from 'react'
 import { fetchUserData } from '../services/githubService'
 
-const search = () => {
+const search = ({onSearch,users}) => {
   const [username, setUsename] = useState('')
   const [userData, setUserData] = useState(null)
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
-  const [password, setPassword] = useState('')
-  const [email, setEmail] = useState('')
+ const  [location, setLocation] = useState()
+ const [repoCount, setRepoCount] = useState()
 
-  const handleSubmit = async (e) => {
+  const handleSearch= async (e) => {
     e.preventDefault();
     setError('');
     setUserData(null)
@@ -31,7 +31,7 @@ const search = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} className='btn gap-3'>
+      <form onSubmit={handleSearch} className='btn gap-3'>
         <div>
           <input className='in'
             type="text" value={username}
@@ -39,8 +39,7 @@ const search = () => {
             placeholder='Enter GitHub username' required
           />
         </div>
-        <button type='submit'>Search</button>
-      </form>
+        <button type='submit' onClick={handleSearch}>Search</button>
       {loading && <p>Loading...</p>}
       {error && <p> {error}</p>}
       {userData && (
@@ -51,7 +50,7 @@ const search = () => {
           <a href={userData.html_url} target='_blank' rel="noopener noreferrer">View Profile</a>
         </div>
       )}
-
+ </form>
     </div>
   )
 };
