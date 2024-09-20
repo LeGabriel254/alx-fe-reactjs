@@ -33,7 +33,7 @@ const search = ({onSearch,users}) => {
     <div>
       <form onSubmit={handleSearch} className='btn gap-3'>
         <div>
-          <input className='in'
+          <input className='in border rounded'
             type="text" value={username}
             onChange={(e) => setUsename(e.target.value)}
             placeholder='Enter GitHub username' required
