@@ -31,9 +31,9 @@ const search = ({ onSearch, users }) => {
 
   return (
     <div>
-      <form onSubmit={handleSearch} className='btn gap-3'>
+      <form onSubmit={handleSearch} className='btn gap-3 '>
         <div>
-          <input className='in border rounded'
+          <input className='in border rounded border-stone-950' 
             type="text" value={username}
             onChange={(e) => setUsename(e.target.value)}
             placeholder='Enter GitHub username' required
@@ -41,7 +41,7 @@ const search = ({ onSearch, users }) => {
         </div>
         <div className='mb-4'>
           <label className='w-full p-2 block text-sm'>Location:</label>
-          <input className='border rounded '
+          <input className='border rounded border-stone-950 '
             type="location" value={location}
             placeholder='Enter location'
             onChange={(e) => setLocation(e.target.value)} />
@@ -50,13 +50,13 @@ const search = ({ onSearch, users }) => {
           <label className=''>Minimum Repositories</label>
           <input
             type="number"
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border rounded border-stone-950"
             value={repoCount}
             onChange={(e) => setRepoCount(e.target.value)}
             placeholder="Enter minimum repo count"
           />
         </div>
-        <button type='submit' onClick={handleSearch}>Search</button>
+        <button type='submit' onClick={handleSearch} className='border rounded border-amber-200 w-20 bg-sky-500 hover:bg-sky-700 ...'>Search</button>
         {loading && <p>Loading...</p>}
         {error && <p> {error}</p>}
         {userData && (
