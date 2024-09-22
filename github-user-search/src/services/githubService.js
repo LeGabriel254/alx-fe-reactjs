@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 
 const Api_Url = `https://api.github.com/users/{username}`
-export const fetchUserData = async ({username,location,miniRepo}) => {
+export const fetchUserData = async ({username,location,miniRepos}) => {
 
 
   searchUsers: async ({ username, location, repoCount }, page = 1) => {
