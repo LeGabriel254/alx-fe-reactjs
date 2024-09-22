@@ -1,30 +1,21 @@
-import React from 'react'
-import axios from 'axios'
+/* eslint-disable no-unused-vars */
+import axios from "axios";
 
-const Api_Url = `https://api.github.com/users/{username}`
-export const fetchUserData = async ({username,location,miniRepos}) => {
+const GITHUB_API_URL = "https://api.github.com/search/users?q=";
 
-
-  searchUsers: async ({ username, location, repoCount }, page = 1) => {
-    let query = [];
-    if (username) query.push(`q=${username}`);
-    if (location) query.push(`location:${location}`);
-    if (repoCount) query.push(`repos:>=${repoCount}`);
-
-    const queryString = query.join('+');
-
-    const response = await axios.get(
-      `https://api.github.com/search/users?q={query}`
-    );
+export const fetchUserData = async ({ username, location, minRepos }) => {
   try {
+    // Build the query string
+    let query = username ? `${username}` : "";
 
-    const response = await axios.get('https://api.github.com/users/{username}') /*Api call using axios to get user data from GitHub*/
-    //if Api call is successfull return response
-    return response.data;
+    // Append location and repos count if provided
+    if (location) query += `+location:${location}`;
+    if (minRepos) query += `+minRepos:>=${minRepos}`;
+
+    const response = await axios.get(`${GITHUB_API_URL}${query}`);
+
+    return response.data.items; // API returns an array of users
   } catch (error) {
-    throw new error("user not found")
+    throw new Error("Error fetching user data");
   }
-
- };
-  
-}
+};
