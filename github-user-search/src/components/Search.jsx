@@ -62,12 +62,11 @@ const search = ({ onSearch, users }) => {
         {userData && (
           <ul>
             {users.map((user) => {
-
-
-              <li>
+              <li key={user.id} className='border p-4 rounded-lg'>
                 <h3>{user.login}</h3>
-                <p>{userData.bio}</p>
-                <a href={userData.html_url} target='_blank' rel="noopener noreferrer">View Profile</a>
+                <p className='font-bold'>{userData.bio}</p>
+                <a href={userData.html_url} target='_blank'
+                 rel="noopener noreferrer">View Profile</a>
               </li>
             })}
           </ul>
