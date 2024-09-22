@@ -33,7 +33,7 @@ const search = ({ onSearch, users }) => {
     <div>
       <form onSubmit={handleSearch} className='btn gap-3 '>
         <div>
-          <input className='in border rounded border-stone-950' 
+          <input className='in border rounded border-stone-950'
             type="text" value={username}
             onChange={(e) => setUsename(e.target.value)}
             placeholder='Enter GitHub username' required
@@ -60,12 +60,17 @@ const search = ({ onSearch, users }) => {
         {loading && <p>Loading...</p>}
         {error && <p> {error}</p>}
         {userData && (
-          <div>
-            <img src={userData.avatar_url} alt={userData.login} width={100} />
-            <h3>{userData.login}</h3>
-            <p>{userData.bio}</p>
-            <a href={userData.html_url} target='_blank' rel="noopener noreferrer">View Profile</a>
-          </div>
+          <ul>
+            {users.map((user) => {
+
+
+              <li>
+                <h3>{user.login}</h3>
+                <p>{userData.bio}</p>
+                <a href={userData.html_url} target='_blank' rel="noopener noreferrer">View Profile</a>
+              </li>
+            })}
+          </ul>
         )}
       </form>
     </div>
