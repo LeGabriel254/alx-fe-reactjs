@@ -63,6 +63,7 @@ const search = ({ onSearch, users }) => {
           <ul>
             {users.map((user) => {
               <li key={user.id} className='border p-4 rounded-lg'>
+                <img src={userData.avatar_url} alt="User avatar" width="100" />
                 <h3>{user.login}</h3>
                 <p className='font-bold'>{userData.bio}</p>
                 <a href={userData.html_url} target='_blank'
