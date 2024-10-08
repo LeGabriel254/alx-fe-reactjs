@@ -48,7 +48,7 @@ const HomePage = () => {
 
 
 const Loading = () => (
-  <div className='text-sm'>Loaidng....</div>
+  <div className='text-sm'>Loading....</div>
 )
 
 export default HomePage;
