@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 
 function RegistrationForm() {
   //initialize Usestate for each nput field
-    const [Username, setUsername] = useState('');
-    const [Email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState('');
 
@@ -27,7 +27,7 @@ function RegistrationForm() {
                 <label>Username:</label>
                 <input
                     type="text"
-                    // value={username}
+                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                 />
             </div>
