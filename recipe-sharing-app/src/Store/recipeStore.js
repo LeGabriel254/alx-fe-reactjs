@@ -10,7 +10,7 @@ const recipeStore = createStore((set) => ({
   recipes: [],
   updateRecipe: (recipeId, updatedRecipe) =>
     set({
-      recipes: recipes.map((recipe) =>
+      recipes: recipe.map((recipe) =>
         recipe.id === recipeId ? { ...recipe, ...updatedRecipe } : recipe
       ),
     }),
@@ -20,7 +20,7 @@ const deleteRecipe = createStore((set) => ({
   recipes: [],
   deleteRecipe: (recipeId) =>
     set({
-      recipes: recipes.filter((recipe) => recipe.id !== recipeId),
+      recipes: recipe.filter((recipe) => recipe.id !== recipeId),
     }),
 
 }));
