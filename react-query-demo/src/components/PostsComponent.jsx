@@ -1,44 +1,36 @@
 import React from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery } from 'react-query';
 
-// Function to fetch posts from the API
 const fetchPosts = async () => {
-  const response = await fetch('https://jsonplaceholder.typicode.com/posts');
-  if (!response.ok) {
-    throw new Error('Network response was not ok');
+  try {
+    const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Fetching Post failed', error);
+    throw error;
+  } finally {
+    console.log('Fetch attempt completed');
   }
-  return response.json();
+
 };
 
 function PostsComponent() {
-  // Using useQuery to fetch data
-  const { data, error, isLoading, isError, refetch } = useQuery({
-    queryKey: ['posts'],
-    queryFn: fetchPosts,
-    staleTime: 60000, // 1 minute cache time
-    cacheTime: 300000, // 5 minutes (data remains in cache for 5 minutes after becoming inactive)
-    refetchOnWindowFocus: true, // Automatically refetch when window regains focus
-    keepPreviousData: true, // Keep previous data while fetching new data.
+  const { data, error, isLoading, refetch } = useQuery('posts', fetchPosts, {
+    staleTime: 5000, // Data stays fresh for 5 seconds
   });
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (isError) {
-    return <div>Error: {error.message}</div>;
-  }
+  if (isLoading) return <p>Loading posts...</p>;
+  if (error) return <p>Error fetching posts: {error.message}</p>;
 
   return (
     <div>
-      <h2>Posts</h2>
       <button onClick={() => refetch()}>Refetch Posts</button>
       <ul>
-        {data.map((post) => (
-          <li key={post.id}>
-            <h3>{post.title}</h3>
-            <p>{post.body}</p>
-          </li>
+        {data.map(post => (
+          <li key={post.id}><strong>{post.title}</strong></li>
         ))}
       </ul>
     </div>
