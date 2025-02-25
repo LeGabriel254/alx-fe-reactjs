@@ -1,4 +1,5 @@
-import { useRecipeStore } from '..component/recipeStore';
+import { useRecipeStore } from "./recipeStore";
+
 
 const FavoritesList = () => {
   const favorites = useRecipeStore(state => state.favorites.map(id =>
@@ -17,5 +18,4 @@ const FavoritesList = () => {
     </div>
   );
 };
-
 export default FavoritesList;

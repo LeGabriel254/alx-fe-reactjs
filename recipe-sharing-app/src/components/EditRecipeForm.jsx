@@ -1,6 +1,6 @@
 import { useDispatch } from 'zustand/hooks';
 import { recipeStore } from './path/to/your/store';
-import useRecipeStore from '../Store/recipeStore';
+import useRecipeStore from './recipeStore';
 
 function EditRecipeForm({ recipe }) {
   const dispatch = useDispatch(recipeStore);
