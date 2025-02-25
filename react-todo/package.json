@@ -9,12 +9,12 @@
     "test": "jest",
     "eject": "react-scripts eject"
   },
-  
   "dependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "@babel/preset-react": "^7.26.3",
     "@eslint/js": "^9.9.0",
     "@testing-library/jest-dom": "^6.5.0",
     "@testing-library/react": "^16.0.1",

@@ -1,19 +1,19 @@
-import { useState } from "react";
-  
-const Todo =[
-  {id:1,text:'I love football', completed: false},
-  {id:1,text:'I listen to music', completed: false},
-  {id:1,text:'I do coding!!', completed: false},
+import React, { useState } from "react";
+
+const initialTodos = [
+  { id: 1, text: "I love football", completed: false },
+  { id: 2, text: "I listen to music", completed: false },
+  { id: 3, text: "I do coding!!", completed: false },
 ];
 
 const TodoList = () => {
   const [todos, setTodos] = useState(initialTodos);
-  const [newTodo, setNewTodo] = useState('');
+  const [newTodo, setNewTodo] = useState("");
 
   const handleAddTodo = () => {
     if (newTodo.trim()) {
       setTodos([...todos, { id: Date.now(), text: newTodo, completed: false }]);
-      setNewTodo('');
+      setNewTodo("");
     }
   };
 
@@ -39,7 +39,7 @@ const TodoList = () => {
       <button onClick={handleAddTodo}>Add</button>
       <ul>
         {todos.map(todo => (
-          <li key={todo.id} style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
+          <li key={todo.id} style={{ textDecoration: todo.completed ? "line-through" : "none" }}>
             <span onClick={() => handleToggleTodo(todo.id)}>{todo.text}</span>
             <button onClick={() => handleDeleteTodo(todo.id)}>Delete</button>
           </li>
