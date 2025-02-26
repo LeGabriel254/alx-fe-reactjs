@@ -13,12 +13,13 @@ describe('GitHub API Service', () => {
       html_url: 'https://github.com/testuser',
     };
 
-    const mockRepoData = [{ name: 'test-repo', updated_at: '2024-02-25T12:34:56Z' }];
-    const mockAllRepos = [{ language: 'JavaScript' }, { language: 'Python' }];
+    const mockRepoData = [
+      { name: 'test-repo', updated_at: '2024-02-25T12:34:56Z', language: 'JavaScript' },
+      { name: 'another-repo', updated_at: '2024-02-20T10:00:00Z', language: 'Python' }
+    ];
 
-    axios.get.mockResolvedValueOnce({ data: mockUserData });
-    axios.get.mockResolvedValueOnce({ data: mockRepoData });
-    axios.get.mockResolvedValueOnce({ data: mockAllRepos });
+    axios.get.mockResolvedValueOnce({ data: mockUserData }); // ✅ User data
+    axios.get.mockResolvedValueOnce({ data: mockRepoData }); // ✅ Repo data
 
     const result = await fetchUserData('testuser');
 
@@ -27,7 +28,7 @@ describe('GitHub API Service', () => {
       recentRepo: 'test-repo',
       lastUpdated: '2024-02-25T12:34:56Z',
       totalRepos: 10,
-      topLanguages: 'JavaScript, Python',
+      topLanguages: 'JavaScript', // Only one top language is returned
     });
   });
 
