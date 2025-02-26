@@ -1,4 +1,4 @@
-let axios; 
+let axios;
 
 // Ensure compatibility for Jest testing
 (async () => {
@@ -38,7 +38,7 @@ export const fetchUserData = async (username) => {
       }
       return acc;
     }, {});
-    
+
     const topLanguages = Object.entries(languageCount)
       .sort((a, b) => b[1] - a[1])
       .slice(0, 1)
