@@ -9,16 +9,28 @@ jest.mock('../store/useGitHubStore', () => ({
 }));
 
 describe('Search Component', () => {
-  it('renders search input and button', () => {
+  let setUsernameMock;
+  let searchUserMock;
+
+  beforeEach(() => {
+    setUsernameMock = jest.fn();
+    searchUserMock = jest.fn();
+
     useGitHubStore.mockReturnValue({
       username: '',
-      setUsername: jest.fn(),
-      searchUser: jest.fn(),
+      setUsername: setUsernameMock,
+      searchUser: searchUserMock,
       userData: null,
       loading: false,
       error: null,
     });
+  });
 
+  afterEach(() => {
+    jest.clearAllMocks(); // Ensure no test affects another
+  });
+
+  it('renders search input and button', () => {
     render(<Search />);
 
     expect(screen.getByPlaceholderText('Enter GitHub username')).toBeInTheDocument();
@@ -26,16 +38,6 @@ describe('Search Component', () => {
   });
 
   it('updates state on input change', () => {
-    const setUsernameMock = jest.fn();
-    useGitHubStore.mockReturnValue({
-      username: '',
-      setUsername: setUsernameMock,
-      searchUser: jest.fn(),
-      userData: null,
-      loading: false,
-      error: null,
-    });
-
     render(<Search />);
 
     fireEvent.change(screen.getByPlaceholderText('Enter GitHub username'), {
@@ -43,5 +45,13 @@ describe('Search Component', () => {
     });
 
     expect(setUsernameMock).toHaveBeenCalledWith('testuser');
+  });
+
+  it('calls searchUser on form submit', () => {
+    render(<Search />);
+
+    fireEvent.submit(screen.getByRole('form'));
+
+    expect(searchUserMock).toHaveBeenCalled();
   });
 });
