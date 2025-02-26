@@ -35,7 +35,7 @@ const Search = () => {
           <p className="mt-1 text-gray-600">Last Seen: {userData.lastUpdated ? new Date(userData.lastUpdated).toLocaleDateString() : 'N/A'}</p>
           <a href={userData.html_url} target="_blank" rel="noopener noreferrer" className="text-blue-500 mt-2 hover:underline">Visit Profile</a>
         </div>
-      )}
+      )};
     </div>
   );
 };
