@@ -8,7 +8,7 @@ const useGitHubStore = create((set) => ({
   error: null,
 
   setUsername: (username) => set({ username }),
-  
+
   searchUser: async () => {
     set({ loading: true, error: null, userData: null });
     try {
