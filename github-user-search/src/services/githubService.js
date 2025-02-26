@@ -1,26 +1,18 @@
 import axios from "axios";
 
-export const fetchUserData = async (username) => {
-  const GITHUB_API_URL = `https://api.github.com/users/${username}`;
-  const apiKey = process.env.REACT_APP_GITHUB_API_KEY; // Fetch API key
+const BASE_URL = "https://api.github.com/users/";
 
+export const fetchUserData = async (username) => {
   try {
-    const response = await axios.get(GITHUB_API_URL, {
+    const response = await axios.get(`${BASE_URL}${username}`, {
       headers: {
-        Authorization: `token ${apiKey}`,
+        Authorization: `Bearer ${import.meta.env.VITE_GITHUB_API_KEY}`,
       },
     });
 
-    return {
-      avatar_url: response.data.avatar_url,
-      login: response.data.login,
-      name: response.data.name || "No name available",
-      location: response.data.location || "No location available",
-      public_repos: response.data.public_repos || 0,
-      html_url: response.data.html_url,
-    };
+    return response.data;
   } catch (error) {
-    console.error("Error fetching user data:", error);
-    throw new Error("User not found or API error");
+    console.error("Error fetching user data:", error.response?.status, error.message);
+    throw error; // This will trigger the error state in App.jsx
   }
 };
