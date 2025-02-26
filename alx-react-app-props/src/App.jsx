@@ -17,6 +17,12 @@ function App() {
   return (
     <UserContext.Provider value={userData}>
       <ProfilePage />
+      <WelcomeMessage />
+        <Header />
+        <MainContent />
+        <Footer />
+        <UserProfile />
+        <UserDetails />
     </UserContext.Provider>
   
   )
